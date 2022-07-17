@@ -1,10 +1,15 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-mongoose.connect("mongodb+srv://harsh9539:Harsh9539@cluster0.egujj.mongodb.net/userApiDB", { useNewUrlParser: true })
+
+const USERNAME = process.env.USERNAMES;
+const PASSWORD = process.env.PASSWORD;
+console.log(USERNAME,PASSWORD);
+mongoose.connect(`mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.egujj.mongodb.net/userApiDB`, { useNewUrlParser: true })
 
 
 // console.log(__dirname)
